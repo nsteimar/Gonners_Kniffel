@@ -1,0 +1,250 @@
+/**
+ * Scorecard - REAL Kniffel Blatt Format
+ * Exact replica of the original game sheet
+ */
+
+.scorecard-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: linear-gradient(135deg, rgba(45, 140, 45, 0.5), rgba(26, 92, 26, 0.4));
+  border: 4px solid #d4af37;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(212, 175, 55, 0.3);
+}
+
+.sheet-tabs {
+  display: none;
+}
+
+.scorecard-tabs::before {
+  content: 'KNIFFELBLATT';
+  display: block;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffd700;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 15px 20px;
+  border-right: 3px solid rgba(212, 175, 55, 0.4);
+}
+
+.category-section:last-child {
+  border-right: none;
+}
+
+.category-section h3 {
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  padding-bottom: 10px;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.category-btn {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  backdrop-filter: none;
+  font-family: 'Cinzel', serif;
+}
+
+.category-btn:last-child {
+  border-bottom: none;
+}
+
+.category-btn:hover:not(:disabled):not(.unavailable) {
+  background: rgba(212, 175, 55, 0.08);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.category-btn.selected {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+  box-shadow: inset 0 0 6px rgba(255, 215, 0, 0.1);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.category-btn:disabled,
+.category-btn.unavailable {
+  color: rgba(212, 175, 55, 0.3);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.category-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f0e68c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Cinzel', serif;
+}
+
+.category-btn:disabled .category-label,
+.category-btn.unavailable .category-label {
+  color: rgba(212, 175, 55, 0.25);
+}
+
+.category-btn.selected .category-label {
+  color: #ffed4e;
+  text-shadow: 0 0 4px rgba(255, 215, 0, 0.3);
+}
+
+.category-points {
+  font-size: 13px;
+  font-weight: 700;
+  color: #d4af37;
+  min-width: 50px;
+  text-align: right;
+  font-family: 'Cinzel', serif;
+  padding: 4px 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 3px;
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.category-btn:disabled .category-points,
+.category-btn.unavailable .category-points {
+  color: rgba(212, 175, 55, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.category-btn.selected .category-points {
+  color: #ffed4e;
+  background: rgba(255, 215, 0, 0.12);
+  border-color: #ffd700;
+  box-shadow: 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-section {
+    border-right: none;
+    border-bottom: 3px solid rgba(212, 175, 55, 0.4);
+  }
+
+  .category-section:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .scorecard-tabs {
+    padding: 15px;
+  }
+
+  .scorecard-tabs::before {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .category-section {
+    padding: 12px 15px;
+  }
+
+  .category-section h3 {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .category-btn {
+    padding: 8px 0;
+  }
+
+  .category-label {
+    font-size: 11px;
+  }
+
+  .category-points {
+    font-size: 12px;
+    min-width: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scorecard-tabs {
+    padding: 12px;
+    border: 3px solid #d4af37;
+  }
+
+  .scorecard-tabs::before {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .category-section {
+    padding: 10px 12px;
+  }
+
+  .category-section h3 {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .category-btn {
+    padding: 6px 0;
+    gap: 8px;
+  }
+
+  .category-label {
+    font-size: 10px;
+  }
+
+  .category-points {
+    font-size: 11px;
+    min-width: 40px;
+    padding: 3px 6px;
+  }
+}

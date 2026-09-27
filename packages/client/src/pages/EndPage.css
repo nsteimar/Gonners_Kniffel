@@ -1,0 +1,262 @@
+/**
+ * End page - Casino Theme (Victory Screen)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.end-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.end-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent);
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, 30px);
+  }
+}
+
+.end-container {
+  background: linear-gradient(135deg, #1a5c1a 0%, #2d8c2d 50%, #1a5c1a 100%);
+  border: 3px solid #d4af37;
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(212, 175, 55, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  max-width: 650px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.end-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.end-container h1 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 35px;
+  color: #ffd700;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 0 4px 15px rgba(255, 215, 0, 0.6),
+               0 0 40px rgba(255, 215, 0, 0.3);
+  letter-spacing: 3px;
+}
+
+.final-scores h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 22px;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Playfair Display', serif;
+}
+
+.scores-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scores-table thead {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.3), rgba(240, 230, 140, 0.2));
+}
+
+.scores-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid #d4af37;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Cinzel', serif;
+}
+
+.scores-table td {
+  padding: 14px 15px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  color: #f0e68c;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.scores-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.scores-table tbody tr:hover {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), rgba(240, 230, 140, 0.1));
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.rank {
+  font-weight: 700;
+  font-size: 18px;
+  color: #d4af37;
+  font-family: 'Cinzel', serif;
+  min-width: 30px;
+  text-align: center;
+}
+
+.player-name {
+  color: #f0e68c;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Cinzel', serif;
+}
+
+.score {
+  font-weight: 700;
+  font-size: 17px;
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  font-family: 'Cinzel', serif;
+}
+
+.rank-1 .rank {
+  color: #ffd700;
+  font-size: 24px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.rank-1 .score {
+  color: #ffed4e;
+  font-size: 18px;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+.rank-2 .rank {
+  color: #c0c0c0;
+  font-size: 22px;
+}
+
+.rank-2 .score {
+  color: #e0e0e0;
+}
+
+.rank-3 .rank {
+  color: #cd7f32;
+  font-size: 20px;
+}
+
+.rank-3 .score {
+  color: #d4a574;
+}
+
+.end-info {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(240, 230, 140, 0.15));
+  border-radius: 10px;
+  border: 2px solid #d4af37;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.end-info p {
+  color: #f0e68c;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-family: 'Cinzel', serif;
+}
+
+.btn-again {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #d4af37 0%, #f0e68c 50%, #d4af37 100%);
+  color: #1a1a1a;
+  border: 2px solid #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-again:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.6),
+              0 0 20px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #f0e68c 0%, #ffd700 50%, #f0e68c 100%);
+}
+
+.btn-again:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .end-container {
+    padding: 30px 20px;
+    border: 2px solid #d4af37;
+  }
+
+  .end-container h1 {
+    font-size: 32px;
+  }
+
+  .scores-table th,
+  .scores-table td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .rank {
+    font-size: 16px;
+  }
+
+  .score {
+    font-size: 15px;
+  }
+
+  .rank-1 .rank {
+    font-size: 20px;
+  }
+}
+

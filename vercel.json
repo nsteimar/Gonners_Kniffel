@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "outputDirectory": "packages/server/dist",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "packages/server/src/index.ts": {
+      "runtime": "nodejs20.x",
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "routes": [
+    {
+      "src": "/socket.io(.*)",
+      "dest": "/packages/server/src/index.ts",
+      "methods": ["GET", "POST", "CONNECT"]
+    }
+  ]
+}

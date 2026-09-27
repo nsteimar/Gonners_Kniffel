@@ -1,0 +1,328 @@
+/**
+ * Scorecard - Kniffel Tabelle mit Summary Rows
+ * Kategorien links, 6 Spiele rechts, nur aktuelles Spiel editierbar
+ */
+
+.scorecard-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: linear-gradient(135deg, rgba(45, 140, 45, 0.6), rgba(26, 92, 26, 0.5));
+  border: 4px solid #d4af37;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 
+    0 15px 50px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(212, 175, 55, 0.3);
+  overflow: hidden;
+}
+
+.sheet-tabs {
+  display: none;
+}
+
+.kniffel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Cinzel', serif;
+  background: transparent;
+}
+
+thead {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #d4af37;
+}
+
+th {
+  padding: 12px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffd700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-right: 2px solid #d4af37;
+  border-bottom: 2px solid #d4af37;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+th:last-child {
+  border-right: none;
+}
+
+.category-name-header {
+  text-align: left;
+  min-width: 120px;
+}
+
+.game-header {
+  min-width: 80px;
+}
+
+tbody tr.category-row {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  transition: background 0.2s ease;
+}
+
+tbody tr.category-row:hover {
+  background: rgba(212, 175, 55, 0.08);
+}
+
+tbody tr.category-row.selected {
+  background: rgba(255, 215, 0, 0.15);
+}
+
+tbody tr.summary-row,
+tbody tr.total-row {
+  border-bottom: 2px solid #d4af37;
+  border-top: 2px solid #d4af37;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+tbody tr.summary-row {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+tbody tr.summary-row.upper-sum {
+  border-top: 3px solid #d4af37;
+}
+
+tbody tr.summary-row.bonus-row {
+  border-bottom: 3px solid #d4af37;
+}
+
+tbody tr.total-row {
+  font-weight: 700;
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+td {
+  padding: 10px;
+  border-right: 2px solid #d4af37;
+  text-align: center;
+  font-size: 13px;
+  height: 45px;
+}
+
+td:last-child {
+  border-right: none;
+}
+
+.category-name {
+  text-align: left;
+  font-weight: 600;
+  color: #f0e68c;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  min-width: 120px;
+  border-right: 3px solid #d4af37 !important;
+}
+
+tbody tr.summary-row .category-name,
+tbody tr.total-row .category-name {
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+tbody tr.total-row .category-name {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+tbody tr.category-row.selected .category-name {
+  color: #ffed4e;
+  font-weight: 700;
+}
+
+.game-cell {
+  cursor: pointer;
+  font-weight: 600;
+  position: relative;
+  min-width: 80px;
+  background: transparent;
+}
+
+.game-cell.current-game {
+  background: rgba(212, 175, 55, 0.06);
+  border-left: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.game-cell.other-game {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
+}
+
+.game-cell.summary-cell,
+.game-cell.total-cell {
+  cursor: default;
+  font-weight: 700;
+}
+
+.game-cell.summary-cell.current-game,
+.game-cell.total-cell.current-game {
+  background: rgba(212, 175, 55, 0.12);
+  border-left: 2px solid rgba(212, 175, 55, 0.5);
+}
+
+.game-cell.summary-cell.other-game,
+.game-cell.total-cell.other-game {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.game-cell.selected-cell {
+  background: rgba(255, 215, 0, 0.12);
+  border-left: 2px solid #ffd700;
+  color: #ffed4e;
+}
+
+.points-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+.points-value.permanent {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+.points-value.preview {
+  color: #ffd700;
+}
+
+.points-value.bonus-active {
+  color: #28a745;
+  font-weight: 700;
+}
+
+.points-value.bonus-inactive {
+  color: rgba(212, 175, 55, 0.4);
+}
+
+.game-cell.current-game .points-value {
+  color: #ffd700;
+}
+
+.game-cell.current-game .points-value.permanent {
+  color: #1a1a1a;
+}
+
+.game-cell.other-game .points-value {
+  color: rgba(212, 175, 55, 0.4);
+}
+
+.game-cell.other-game .points-value.inactive {
+  color: rgba(212, 175, 55, 0.3);
+}
+
+.game-cell.other-game .points-value.permanent {
+  color: #1a1a1a;
+}
+
+.game-cell.summary-row .points-value,
+.game-cell.total-row .points-value {
+  color: #1a1a1a;
+}
+
+.game-cell.selected-cell .points-value {
+  color: #ffed4e;
+}
+
+.game-cell.selected-cell .points-value.permanent {
+  color: #1a1a1a;
+}
+
+.points-empty {
+  color: rgba(212, 175, 55, 0.3);
+  font-size: 12px;
+}
+
+.bonus-hint {
+  font-size: 10px;
+  color: #ffd700;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+@media (max-width: 1200px) {
+  .kniffel-table {
+    font-size: 12px;
+  }
+
+  th {
+    padding: 10px 6px;
+    font-size: 11px;
+  }
+
+  td {
+    padding: 8px 6px;
+    font-size: 12px;
+    height: 40px;
+  }
+
+  .category-name-header {
+    min-width: 110px;
+  }
+
+  .game-header {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 900px) {
+  .scorecard-tabs {
+    border: 3px solid #d4af37;
+  }
+
+  th {
+    padding: 8px 4px;
+    font-size: 10px;
+  }
+
+  td {
+    padding: 6px 4px;
+    font-size: 11px;
+    height: 36px;
+  }
+
+  .category-name-header {
+    min-width: 90px;
+  }
+
+  .game-header {
+    min-width: 60px;
+  }
+
+  .points-value {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  th {
+    padding: 6px 3px;
+    font-size: 9px;
+  }
+
+  td {
+    padding: 5px 3px;
+    font-size: 10px;
+    height: 32px;
+  }
+
+  .category-name-header {
+    min-width: 80px;
+    font-size: 10px;
+  }
+
+  .game-header {
+    min-width: 50px;
+  }
+
+  .points-value {
+    font-size: 11px;
+  }
+}
+

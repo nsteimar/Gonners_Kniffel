@@ -1,0 +1,21 @@
+{
+  "name": "kniffel-multiplayer",
+  "version": "0.1.0",
+  "description": "Online multiplayer Kniffel (Yahtzee) game",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:server": "pnpm --filter @kniffel/server dev",
+    "dev:client": "pnpm --filter @kniffel/client dev",
+    "dev": "pnpm install && echo 'Starting servers...'",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0"
+  }
+}
